@@ -9,11 +9,13 @@ WHITE = (255, 255, 255)
 class Block(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__()
-        self.image = pygame.Surface([width, height])
+        self.image = pygame.Surface([20, 30])
         self.image.fill(WHITE)
         self.image.set_colorkey(WHITE)
         # Draw the ellipse
-        pygame.draw.ellipse(self.image, color, [0, 0, width, height])
+
+    def draw(self):
+        pygame.draw.ellipse(self.image, BLACK, [0, 0, 50, 100])
 
 pygame.init()
 
@@ -32,7 +34,6 @@ for i in range(500):
     my_list.append(my_object)
 
 
-
 while not done:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -42,7 +43,7 @@ while not done:
     p = len(my_list)
     for i in range(p):
         my_object = my_list[i]
-        my_object.move()
+        #my_object.move()
         my_object.draw()
 
     pygame.display.flip()
